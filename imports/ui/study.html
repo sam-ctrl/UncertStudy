@@ -1,0 +1,46 @@
+    <body>
+        <div class="section"> <!-- timeline1.js - Simple click on timeline -->
+            <br>
+            <h1>Highlight the <u><span id = maxprob>maximum possible</span></u> range for <br><b> "<span id = 'randomterm'></span> <span id = 'randompickdate'></span></b>"</h1>
+
+            <!--<br> click submit when you are satisfied with your selection-->            
+
+            <div id='chart'></div>
+
+            <form>
+
+                <input type="hidden" name="startTime1" id='startTime1'> </input>
+                <input type="hidden" name="target1" id='target1'> </input>
+                <input type="hidden" name="input1" id='input1'> </input>
+                <input type="hidden" name="clicknumber1" id="clicknumber1"> </input>
+
+                from 
+                <input type="date" id="datefrom" onchange="updatebrush()"></input>
+
+                to
+                <input type="date" id="dateto" onchange="updatebrush()"></input> &nbsp;  &nbsp;
+
+                <br><br><br>
+                <input type="hidden" name="distance1" id='distance1' /><br>
+                Please rate your confidence with this assessment:<br>
+                <input type="hidden" name="difficulty1" id="difficulty1" value="Unchanged/Neutral"><br>
+                <div class="slider" id="difficultySlider1"></div>
+                <br><br><br>
+                <a href="." class="btn btn-success btn-lg">Next</a> <a href="./complete.html" class="btn btn-primary btn-lg">Finish</a> <a href="http://samctrl.com/portfolio" class="btn btn-danger btn-lg">Cancel</a>
+
+
+                <input type="hidden" name="endTime" id='endTime' />
+                <input type="hidden" name="totaldistance" id='totaldistance' />
+                <input type="hidden" name="quizendWindowHeight" id='quizendWindowHeight'/>
+                <input type="hidden" name="quizendDocumentHeight" id='quizendDocumentHeight'/>
+                <input type="hidden" name="quizendWindowWidth" id='quizendWindowWidth'/>
+                <input type="hidden" name="quizendDocumentWidth" id='quizendDocumentWidth'/>
+                <input type='hidden' name="quizendScreenHeight" id='quizendScreenHeight'/>
+                <input type='hidden' name="quizendScreenWidth" id='quizendScreenWidth'/>
+
+            </form>
+
+        </div>
+
+
+</body>
