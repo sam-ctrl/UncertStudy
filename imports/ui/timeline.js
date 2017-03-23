@@ -2,21 +2,21 @@
             var difficulty = ["Very Uncertain", "Uncertain", "Fairly Uncertain", "Neutral", "Fairly Certain", "Certain", "Very Certain"];
             // lets be fancy for the demo and select the current month.
 
-            // $(".slider")
+            $(".slider")
                                 
-            //     // activate the slider with options
-            //     .slider({ 
-            //         min: 0, 
-            //         max: difficulty.length-1, 
-            //         value: 3,
-            //         animate: 400
-            //     })
+                // activate the slider with options
+                .slider({ 
+                    min: 0, 
+                    max: difficulty.length-1, 
+                    value: 3,
+                    animate: 400
+                })
                                 
-            //     // add pips with the labels set to "months"
-            //     .slider("pips", {
-            //         rest: "label",
-            //         labels: difficulty
-            //     })
+                // add pips with the labels set to "months"
+                .slider("pips", {
+                    rest: "label",
+                    labels: difficulty
+                })
                                 
                 // and whenever the slider changes, lets echo out the month
                 // .on("slidechange", function(e,ui) {
