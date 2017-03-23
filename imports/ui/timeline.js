@@ -1,156 +1,22 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-
-    <meta charset="utf-8">
-    <title>Date Accuracy Test</title>
-    <meta name="author" content="Sam Cottrell" />
-    <meta name="description" content="Date Recognition Test" />
-    <meta name="Resource-type" content="Document" />
-
-
-
-  	<!-- Font -->
-    <link href='https://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
-
-    <!-- D3 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.8/d3.js"></script>
-
-    <!-- Jquery  -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <!-- Bootstrap (for buttons) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-
-    <!-- Sweetalert for sweet alerts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.3/sweetalert2.js"></script> 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css"> 
-
-    <!-- Sliderpips and jquery UI for sliderpips-->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/flick/jquery-ui.css"> 
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-ui-Slider-Pips/1.11.4/jquery-ui-slider-pips.min.js"></script> 
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery-ui-Slider-Pips/1.11.4/jquery-ui-slider-pips.min.css"> 
-
-
-    <!-- Personal CSS -->
-    <link href="graph.css" rel="stylesheet">
-
-
-
-    <style>
-
-    </style>
-
-    </head>
-
-    <body>
-
-      <div class="outer">
-        <div class="middle">
-          <div class="inner">
-
-        <div class="section">
-            Using the date inputs or clicking and dragging on the timelines
-            <br>
-            <h1>Input the <u><span id = "prob">probable</span></u> range for <br><b> "<span id = 'randomterm'></span> <span id = 'randompickdate'></span></b>"</h1>
-            <br>
-            from 
-            <input type="date" id="datefrom" onchange="updatebrush()" />
-            to
-            <input type="date" id="dateto" onchange="updatebrush()" /> &nbsp;  &nbsp;
-            <br> 
-
-            <div id='chart'></div>
-
-            Snap to nearest:
-                <input type="radio" onchange="snapTo()" name="snap" value="day" id="day">Day &nbsp;
-                <input type="radio" onchange="snapTo()" name="snap" value="month" id="month">Month &nbsp;
-                <input type="radio" onchange="snapTo()" name="snap" value="year" id="year">Year &nbsp;
-                <input type="radio" onchange="snapTo()" name="snap" value="no" id="no" checked>No Snap 
-
-            <br>
-
-            
-            <!--Zoom: <button id=zoomOut>+</button><button id=zoomIn>-</button>-->
-            <!--<button id="resetzoom" onclick="resetZoom()">Reset Zoom</button>-->
-            <br /><br />
-            <input type="hidden" name="startTime1" id='startTime1' />
-            <input type="hidden" name="target1" id='target1' />
-            <input type="hidden" name="resolution" id='resolution' />
-            <input type="hidden" name="probMin" id='probMin' />
-            <input type="hidden" name="probMax" id='probMax' />
-            <input type="hidden" name="posMin" id='posMin' />
-            <input type="hidden" name="posMax" id='posMax' />
-            <input type="hidden" name="clicknumber1" id="clicknumber1" />
-
-
-
-
-            <input type="hidden" name="distance1" id='distance1' /><br>
-            Please rate your confidence with this assessment:<br>
-            <input type="hidden" name="difficulty1" id="difficulty1" value="Unchanged/Neutral"><br>
-            <div class="slider" id="difficultySlider1"></div>
-            <br><br><br>
-
-            <a class="btn btn-success btn-lg" id="next">Next</a> <a href="http://samctrl.com/portfolio" class="btn btn-danger btn-lg">Cancel</a>
-
-    
-            <input type="hidden" name="pageloadDate" id='pageloadDate' /> <!-- start time -->
-            <input type="hidden" name="endTime" id='endTime' />
-            <input type="hidden" name="totaldistance" id='totaldistance' />
-            <input type="hidden" name="quizendWindowHeight" id='quizendWindowHeight'/>
-            <input type="hidden" name="quizendDocumentHeight" id='quizendDocumentHeight'/>
-            <input type="hidden" name="quizendWindowWidth" id='quizendWindowWidth'/>
-            <input type="hidden" name="quizendDocumentWidth" id='quizendDocumentWidth'/>
-            <input type='hidden' name="quizendScreenHeight" id='quizendScreenHeight'/>
-            <input type='hidden' name="quizendScreenWidth" id='quizendScreenWidth'/>
-
-            
-
-        </div>
-    </form>
-
-          </div>
-      </div>
-    </div>
-
-
-<!--     The JS that sends the form information to the datbase -->
-    <script src="formsubmit.js" type="text/javascript"></script>
-
-
-        <script>
-
-//-------------------------------------- LEFT TO DO ----------------------------
-
-// lines before submission
-
-// Maybe do:
-//// improve hoverover and user feedback
-
-
-            //Configure the difficulty sliders
+             //Configure the difficulty sliders
             var difficulty = ["Very Uncertain", "Uncertain", "Fairly Uncertain", "Neutral", "Fairly Certain", "Certain", "Very Certain"];
             // lets be fancy for the demo and select the current month.
 
-            $(".slider")
+            // $(".slider")
                                 
-                // activate the slider with options
-                .slider({ 
-                    min: 0, 
-                    max: difficulty.length-1, 
-                    value: 3,
-                    animate: 400
-                })
+            //     // activate the slider with options
+            //     .slider({ 
+            //         min: 0, 
+            //         max: difficulty.length-1, 
+            //         value: 3,
+            //         animate: 400
+            //     })
                                 
-                // add pips with the labels set to "months"
-                .slider("pips", {
-                    rest: "label",
-                    labels: difficulty
-                })
+            //     // add pips with the labels set to "months"
+            //     .slider("pips", {
+            //         rest: "label",
+            //         labels: difficulty
+            //     })
                                 
                 // and whenever the slider changes, lets echo out the month
                 // .on("slidechange", function(e,ui) {
@@ -816,8 +682,3 @@
                             .attr("opacity", 0);
 
         })
-        </script>
-
-    </body>
-
-</html>

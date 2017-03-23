@@ -1,34 +1,54 @@
     <body>
-        <div class="section"> <!-- timeline1.js - Simple click on timeline -->
-            <br>
-            <h1>Highlight the <u><span id = maxprob>maximum possible</span></u> range for <br><b> "<span id = 'randomterm'></span> <span id = 'randompickdate'></span></b>"</h1>
 
-            <!--<br> click submit when you are satisfied with your selection-->            
-
-            <div id='chart'></div>
-
-            <form>
-
-                <input type="hidden" name="startTime1" id='startTime1' />
-                <input type="hidden" name="target1" id='target1' />
-                <input type="hidden" name="input1" id='input1' />
-                <input type="hidden" name="clicknumber1" id="clicknumber1" />
-
+      <div class="outer">
+        <div class="middle">
+          <div class="inner">
+            <div class="section">
+                Using the date inputs or clicking and dragging on the timelines
+                <br>
+                <h1>Input the <u><span id = "prob">probable</span></u> range for <br><b> "<span id = 'randomterm'></span> <span id = 'randompickdate'></span></b>"</h1>
+                <br>
                 from 
                 <input type="date" id="datefrom" onchange="updatebrush()" />
-
                 to
-                <input type="date" id="dateto" onchange="updatebrush()"/> &nbsp;  &nbsp;
+                <input type="date" id="dateto" onchange="updatebrush()" /> &nbsp;  &nbsp;
+                <br> 
 
-                <br><br><br>
+                <div id='chart'></div>
+
+                Snap to nearest:
+                    <input type="radio" onchange="snapTo()" name="snap" value="day" id="day">Day &nbsp;
+                    <input type="radio" onchange="snapTo()" name="snap" value="month" id="month">Month &nbsp;
+                    <input type="radio" onchange="snapTo()" name="snap" value="year" id="year">Year &nbsp;
+                    <input type="radio" onchange="snapTo()" name="snap" value="no" id="no" checked>No Snap 
+
+                <br>
+
+                <!--Zoom: <button id=zoomOut>+</button><button id=zoomIn>-</button>-->
+                <!--<button id="resetzoom" onclick="resetZoom()">Reset Zoom</button>-->
+                <br /><br />
+                <input type="hidden" name="startTime1" id='startTime1' />
+                <input type="hidden" name="target1" id='target1' />
+                <input type="hidden" name="resolution" id='resolution' />
+                <input type="hidden" name="probMin" id='probMin' />
+                <input type="hidden" name="probMax" id='probMax' />
+                <input type="hidden" name="posMin" id='posMin' />
+                <input type="hidden" name="posMax" id='posMax' />
+                <input type="hidden" name="clicknumber1" id="clicknumber1" />
+
+
+
+
                 <input type="hidden" name="distance1" id='distance1' /><br>
                 Please rate your confidence with this assessment:<br>
-                <input type="hidden" name="difficulty1" id="difficulty1" value="Unchanged/Neutral" /><br>
-                <div class="slider" id="difficultySlider1"></div>
+                <input type="hidden" name="difficulty1" id="difficulty1" value="Unchanged/Neutral"><br>
+                <!--<div class="slider" id="difficultySlider1"></div>-->
                 <br><br><br>
-                <a href="." class="btn btn-success btn-lg">Next</a> <a href="./complete.html" class="btn btn-primary btn-lg">Finish</a> <a href="http://samctrl.com/portfolio" class="btn btn-danger btn-lg">Cancel</a>
 
+                <a class="btn btn-success btn-lg" id="next">Next</a> <a href="http://samctrl.com/portfolio" class="btn btn-danger btn-lg">Cancel</a>
 
+        
+                <input type="hidden" name="pageloadDate" id='pageloadDate' /> <!-- start time -->
                 <input type="hidden" name="endTime" id='endTime' />
                 <input type="hidden" name="totaldistance" id='totaldistance' />
                 <input type="hidden" name="quizendWindowHeight" id='quizendWindowHeight'/>
@@ -38,9 +58,9 @@
                 <input type='hidden' name="quizendScreenHeight" id='quizendScreenHeight'/>
                 <input type='hidden' name="quizendScreenWidth" id='quizendScreenWidth'/>
 
-            </form>
-            
+            </div>
         </div>
-
+      </div>
+    </div>
 
 </body>
