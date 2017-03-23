@@ -1,4 +1,13 @@
-             //Configure the difficulty sliders
+
+//-------------------------------------- LEFT TO DO ----------------------------
+
+// lines before submission
+
+// Maybe do:
+//// improve hoverover and user feedback
+
+
+            //Configure the difficulty sliders
             var difficulty = ["Very Uncertain", "Uncertain", "Fairly Uncertain", "Neutral", "Fairly Certain", "Certain", "Very Certain"];
             // lets be fancy for the demo and select the current month.
 
@@ -395,7 +404,17 @@
 
     };
 
-    
+
+    d3.selectAll(".snap")
+        .on("change", function() { 
+            snapTo()
+        });
+
+
+    d3.selectAll(".dateselect")
+        .on("change", function() { 
+            updatebrush()
+        });
 
     function snapTo(){
 

@@ -17,18 +17,18 @@
                 <h1>Input the <u><span id = "prob">probable</span></u> range for <br><b> "<span id = 'randomterm'></span> <span id = 'randompickdate'></span></b>"</h1>
                 <br>
                 from 
-                <input type="date" id="datefrom" onchange="updatebrush()" />
+                <input type="date" id="datefrom" class="dateselect" />
                 to
-                <input type="date" id="dateto" onchange="updatebrush()" /> &nbsp;  &nbsp;
+                <input type="date" id="dateto" class="dateselect" /> &nbsp;  &nbsp;
                 <br> 
 
                 <div id='chart'></div>
 
                 Snap to nearest:
-                    <input type="radio" onchange="snapTo()" name="snap" value="day" id="day">Day &nbsp;
-                    <input type="radio" onchange="snapTo()" name="snap" value="month" id="month">Month &nbsp;
-                    <input type="radio" onchange="snapTo()" name="snap" value="year" id="year">Year &nbsp;
-                    <input type="radio" onchange="snapTo()" name="snap" value="no" id="no" checked>No Snap 
+                    <input type="radio" class="snap" name="snap" value="day" id="day">Day &nbsp;
+                    <input type="radio" class="snap" name="snap" value="month" id="month">Month &nbsp;
+                    <input type="radio" class="snap" name="snap" value="year" id="year">Year &nbsp;
+                    <input type="radio" class="snap" name="snap" value="no" id="no" checked>No Snap 
 
                 <br>
 
