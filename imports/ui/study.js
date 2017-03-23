@@ -3,9 +3,11 @@ import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
  
 import './study.html';
-// import './timeline.js';
+import './timeline.js';
 
-Template.study.onRendered = function () {
+console.log("balls to the wall")
+
+Template.study.onRendered(function () {
 
     console.log("shit loaded yo")
 
@@ -19,5 +21,7 @@ Template.study.onRendered = function () {
             .attr("r", 20)
             .attr("fill", "red");
 
-};
+    import './timeline.js';
+
+});
 
