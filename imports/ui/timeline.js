@@ -74,7 +74,7 @@
                             d3.select('#pageloadDate').property("value", pageloadDate);
             }
 
-            var userSelectedResoution = "day"
+        var userSelectedResoution = "day"
 
 
         //pick a random term
@@ -368,6 +368,16 @@
             .on("touchmove.zoom", null)
             .on("touchend.zoom", null);
 
+    
+    function brushtest() {
+        brush.extent([roundranddate, roundranddate]);
+        brush(d3.select(".brush").transition());
+    };
+
+    brushtest()
+    // console.log(brush.extent)
+    
+
     var extent = brush.extent();
 
     function brushstart() {
@@ -513,7 +523,7 @@
                         .attr("y", 0)
                         .attr("fill", "grey")
                         .attr("opacity", 0.5)
-                        .transition(800)
+                        .transition()
                             .attr("fill", "#90df90")
                             .attr("height", 50)
                             .attr("y", 75)
@@ -573,7 +583,7 @@
                                     .attr("y", 0)
                                     .attr("fill", "grey")
                                     .attr("opacity", 0.5)
-                                    .transition(800)
+                                    .transition()
                                         .attr("fill", "#9E88A9")
                                         .attr("height", 100)
                                         .attr("y", 50)
@@ -681,7 +691,7 @@
         svg.append("g")
             .append("text")
             .attr("id", "info")
-            .text("Mouse scroll to zoom     Click and drag to highlight")
+            .text("Mouse scroll to zoom.     Click and drag to highlight")
             .attr("fill", "darkgreen")
             .attr("font-size", "20px")
             .attr("opacity", 1)
@@ -691,13 +701,19 @@
         d3.select("#info")
             .attr("x", (width/2) - (svg.select('#info').node().getBBox().width / 2))
 
+        var texthovered = false;
+
         d3.select("svg").on("mouseover", function(){
 
-            d3.select("#info")
-                    .transition()
-                    .duration(1000)
-                        .transition()
-                        .duration(700)
-                            .attr("opacity", 0);
+            if (texthovered == false){
+                d3.select("#info")
+                        .transition("textfadedelay")
+                        .duration(1000)
+                            .transition("textfade")
+                            .duration(700)
+                                .attr("opacity", 0);
+            }
+
+            texthovered = true;
 
         })
