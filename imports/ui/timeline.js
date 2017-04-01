@@ -610,10 +610,10 @@
       
                             
 
-                            //change button text from next to continue (maybe should be the other way around) 
+                            //change button text from continue to submit
 
                             d3.select('#next')
-                                .text ("Continue")
+                                .text ("Submit")
                                 .attr ("class", "btn btn-success btn-lg");
 
 

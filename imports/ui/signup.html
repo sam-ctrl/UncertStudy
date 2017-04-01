@@ -1,4 +1,18 @@
   <body>
+
+    {{#if currentUser}}
+    
+        {{> dashboard}}
+    
+    {{else}}
+        {{> signup}}
+        {{> login}}
+    {{/if}}
+
+  </body>
+
+  <template name="signup">
+
       <div class="outer">
         <div class="middle">
           <div class="inner">
@@ -32,7 +46,7 @@
 
                 <tr>
                     <td>Email:</td>
-                    <td><input type="text" name="email" id="email" /></td>
+                    <td><input type="email" name="registeremail" id="email" /></td>
                 </tr>
 
                 <tr>
@@ -150,9 +164,15 @@
               </tr>
             
             </table>
+
+            <input type="submit" value="Register">
+
             </form>
 
                <br><br>
+
+               
+
                <span class="btn btn-success btn-lg" id="start">Continue</span> <br><br> <span class="fake-link" onclick="restartmessage()">Cancel</span>
 
               <button id="sub" class="btn btn-success btn-lg">Finish and submit</button>
@@ -172,4 +192,17 @@
     </div>
 
 
-    </body>
+    </template>
+
+<template name="login">
+    <form>
+        <input type="email" name="loginEmail">
+        <input type="password" name="loginPassword">
+        <input type="submit" value="Login">
+    </form>
+</template>
+
+<template name="dashboard">
+    <p>You're logged in.</p>
+    <p><a href="#" class="logout">Logout</a></p>
+</template>
