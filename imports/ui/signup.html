@@ -1,21 +1,24 @@
   <body>
+      <div class="outer">
+        <div class="middle">
+          <div class="inner">
+          {{#if currentUser}}
 
-    {{#if currentUser}}
-    
-        {{> dashboard}}
-    
-    {{else}}
-        {{> signup}}
-        {{> login}}
-    {{/if}}
+              {{> dashboard}}
+          
+          {{else}}
+              {{> signup}}
+              {{> login}}
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
 
   </body>
 
   <template name="signup">
 
-      <div class="outer">
-        <div class="middle">
-          <div class="inner">
 
             <div class="section"><!--Personal information -->
             <br>
@@ -31,12 +34,12 @@
 
                 <tr>
                     <td>Username:<span style="color: red;">*</span></td>
-                    <td><input type="text" name="userName" id="userName" placeholder="" /></td>
+                    <td><input type="username" name="registerUsername" id="userName" placeholder="" /></td>
                 </tr>
 
                 <tr>
                     <td>Password:<span style="color: red;">*</span></td> 
-                    <td><input type="password" name="password" id="password" placeholder="" /></td>
+                    <td><input type="password" name="registerPassword" id="password" placeholder="" /></td>
                 </tr>
 
                 <tr>
@@ -46,7 +49,7 @@
 
                 <tr>
                     <td>Email:</td>
-                    <td><input type="email" name="registeremail" id="email" /></td>
+                    <td><input type="email" name="registerEmail" id="email" /></td>
                 </tr>
 
                 <tr>
@@ -165,7 +168,7 @@
             
             </table>
 
-            <input type="submit" value="Register">
+            <input  type="submit" class="btn btn-success btn-lg" value="Register">
 
             </form>
 
@@ -187,20 +190,33 @@
              </span>
           </div>
 
-          </div>
-      </div>
-    </div>
-
 
     </template>
 
 <template name="login">
     <form>
-        <input type="email" name="loginEmail">
-        <input type="password" name="loginPassword">
+
+          <table align = "center" class = "signup"> 
+
+            <col class="labels" />
+            <col class="form" />
+
+                <tr>
+                    <td>Username:<span style="color: red;">*</span></td>
+                    <td><input type="username" name="loginUsername" id="userName" placeholder="" /></td>
+                </tr>
+
+                <tr>
+                    <td>Password:<span style="color: red;">*</span></td> 
+                    <td><input type="password" name="loginPassword" id="password" placeholder="" /></td>
+                </tr>
+
+          </table>
         <input type="submit" value="Login">
     </form>
 </template>
+
+
 
 <template name="dashboard">
     <p>You're logged in.</p>
