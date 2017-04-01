@@ -6,10 +6,11 @@
 // Maybe do:
 //// improve hoverover and user feedback
 
+            import { studyEntry } from '../api/collection.js';
 
             //Configure the difficulty sliders
             var difficulty = ["Very Uncertain", "Uncertain", "Fairly Uncertain", "Neutral", "Fairly Certain", "Certain", "Very Certain"];
-            // lets be fancy for the demo and select the current month.
+
 
             $(".slider")
                                 
@@ -21,26 +22,35 @@
                     animate: 400
                 })
                                 
-                // add pips with the labels set to "months"
+                // add pips
                 .slider("pips", {
                     rest: "label",
                     labels: difficulty
                 })
                                 
-                // and whenever the slider changes, lets echo out the month
+                // and whenever the slider changes, lets echo out the difficulty
                 // .on("slidechange", function(e,ui) {
                 //     $("#labels-months-output").text( "You selected " + months[ui.value] + " (" + ui.value + ")");
                 // });
 
 
             //Get the display properties and add them to hidden form fields ready for submission to database
-            d3.select('#pageloadWindowHeight').property("value", $(window).height());
-            d3.select('#pageloadDocumentHeight').property("value", $(document).height());
-            d3.select('#pageloadWindowWidth').property("value", $(window).width());
-            d3.select('#pageloadDocumentWidth').property("value", $(document).width());
-            d3.select('#pageloadScreenHeight').property("value", screen.height);
-            d3.select('#pageloadScreenWidth').property("value", screen.width); 
+            // d3.select('#pageloadWindowHeight').property("value", $(window).height());
+            // d3.select('#pageloadDocumentHeight').property("value", $(document).height());
+            // d3.select('#pageloadWindowWidth').property("value", $(window).width());
+            // d3.select('#pageloadDocumentWidth').property("value", $(document).width());
+            // d3.select('#pageloadScreenHeight').property("value", screen.height);
+            // d3.select('#pageloadScreenWidth').property("value", screen.width); 
 
+
+            var diff = "not selected"
+
+                $('#difficultySlider1')
+                    .on("slidechange", function(e,ui) {
+
+                        diff = difficulty[ui.value]
+
+                });
 
             // Standard variables
             var width = 1400
@@ -112,7 +122,7 @@
             resolution == "month"  ? formatMonth(givendate) :
             resolution == "year"  ? formatYear(givendate) :
             resolution == "decade"  ?  formatYear(givendate) + "s" :
-            resolution =="century" ? formatYear(givendate).substring(0,2) + (nth(formatYear(givendate).substring(0,2))) + " century" :
+            resolution =="century" ? (parseInt(formatYear(givendate).substring(0,2))+1) + (nth(parseInt(formatYear(givendate).substring(0,2))+1)) + " century" :
             "error" ;
         }
 
@@ -382,6 +392,8 @@
 
     function brushstart() {
 
+        clicks++
+
         if (brushed == 0) {
             var point = d3.mouse(this)[0]
             var start = xScale.invert(point)
@@ -617,19 +629,42 @@
 
                 } else {
 
-                //What to do if both probable and possible have been entered i.e. load a new one
-                
+                        //What to do if both probable and possible have been entered i.e. submit the data to mongo and load a new one
+
+                            console.log("submitting")
+
+                            var compiledData = ({
+                                givenDate: roundranddate, 
+                                givenResolution: roundranddate,
+                                givenTerm: randomterm,
+                                probMax: probMaxVal,
+                                probMin: probMinVal,
+                                posMax: posMaxVal,
+                                posMin: posMinVal,
+                                confidence: diff,
+                                clicks: clicks,
+                                dateupdates: dateupdates,
+                                WindowHeight: $(window).height(),
+                                DocumentHeight: $(document).height(),
+                                WindowWidth: $(window).width(),
+                                DocumentWidth: $(document).width(),
+                                ScreenHeight: screen.height,
+                                ScreenWidth: screen.width,
+                                Phase: "testing"
+                                 });
+
+                            console.log(compiledData)
+
+                            studyEntry.insert(compiledData);
+
+                            //loadNext()
+
                 }
 
             }
         });
 
-            $('#difficultySlider1')
-                .on("slidechange", function(e,ui) {
 
-                    d3.select('#difficulty1').property("value", difficulty[ui.value])
-
-            });
 
         // function zoomout(){
 
@@ -717,3 +752,9 @@
             texthovered = true;
 
         })
+
+
+        function loadNext(){
+            location.reload();
+        }
+
