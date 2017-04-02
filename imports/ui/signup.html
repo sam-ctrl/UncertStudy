@@ -1,7 +1,5 @@
   <body>
-      <div class="outer">
-        <div class="middle">
-          <div class="inner">
+
           {{#if currentUser}}
 
               {{> loginButtons}}
@@ -9,225 +7,262 @@
           
           {{else}}
 
-              {{> splashscreen}}
+        <div class="top-content">
 
-                {{#if loadlogin}}
+            <div class="inner-bg">
+                <div class="container">
+                	
+                  {{> header}}
+                
+                <div class="row">
                   {{> login}}
-                {{else}}
-                {{/if}}
 
-                <!--{{#if loadsignup}}
-                  {{> signup}}
-                {{else}}
-                {{/if}}-->
-              
+                  {{> signup}}     
+                </div>     
+                    
+                  </div>
+                    
+                </div>
+            </div>
+
+            <!--{{> footer}}-->
+            
+
           {{/if}}
 
-        </div>
-      </div>
-    </div>
 
   </body>
 
+  <template name ="header">
+
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1>A Study into The Perception of Common Uncertainty Terms Used With Dates</h1>
+                            <div class="description">
+                            	<p>
+	                            	Since different uncertainty terms associated with dates convey varying amounts of certainty, to fully transfer textual
+                                date information into a visual medium the nature of the terms used must be understood. Uncertainty terms are by
+                                their nature and intent ambiguous. They are also subject to the interpretation of the parties involved (both audience
+                                and the author). This study aims to comprehend what is most commonly intended when these terms are used, in a
+                                manner that can then be transferred to a visual medium.
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+  </template>
+
+
+<template name = "footer">
+
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				<p>Lorum impsum</p>
+        			</div>
+        			
+        		</div>
+        	</div>
+        </footer>
+
+</template>
+
+
   <template name="signup">
 
+        <div class="col-sm-1 middle-border"></div>
+        <div class="col-sm-1"></div>
 
-            <div class="section"><!--Personal information -->
-            <br>
-            <h1>Please fill in the following information</h1>
-            <br>
+                        <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>or Register</h3>
+	                            		<p>Fill in the form below:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-pencil"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
 
-          <form id="myForm" action="userInfo.php" method="post">
+                            <!--FORM STARTS HERE-->
 
-          <table align = "center" class = "signup"> 
+				                    <form class="registration-form">
+                              
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-signupusername">Username</label>
+                                  <input type="username" name="registerUsername" id="userName" placeholder="Username..." class="form-username form-control"/>
+				                      </div>
 
-            <col class="labels" />
-            <col class="form" />
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-signuppassword">Password</label>
+                                  <input type="password" name="registerPassword" id="password" class="form-password form-control" placeholder="Password..." />
+				                        </div>
 
-                <tr>
-                    <td>Username:<span style="color: red;">*</span></td>
-                    <td><input type="username" name="registerUsername" id="userName" placeholder="" /></td>
-                </tr>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-name">Name</label>
+				                        	<input type="text" name="name" placeholder="Name..." class="form-name form-control" id="name">
+				                        </div>
 
-                <tr>
-                    <td>Password:<span style="color: red;">*</span></td> 
-                    <td><input type="password" name="registerPassword" id="password" placeholder="" /></td>
-                </tr>
+                                <div class="form-group">
+				                        	<label class="sr-only" for="form-email">Email</label>
+				                        	<input type="text" name="registerEmail" placeholder="Email..." class="form-email form-control" id="email">
+				                        </div>
 
-                <tr>
-                    <td>Name:</td>
-                    <td><input type="text" name="name" id="name" /></td>
-                </tr>
+                                <div class="form-group">
+				                        	<label class="sr-only" for="form-gender">Gender</label>
+                                    <select name = "sex" id = "sex" class="form-sex form-control" placeholder= "Gender...">
+                                      <option value="male">Male</option>
+                                      <option value="female">Female</option>
+                                      <option value="other">Other</option>
+                                      <option value="nodisclose">Prefer not to disclose</option>
+                                      <option selected disabled hidden value=''>Gender...</option>
+                                    </select>
+				                        </div>
 
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="email" name="registerEmail" id="email" /></td>
-                </tr>
+                                <div class="form-group">
+				                        	<label class="sr-only" for="form-age">Age</label>
+                                    <select name = "age" id = "age" class="form-age form-control" placeholder="Age...">
+                                      <option value="under20">Under 20</option>
+                                      <option value="20-24">20 - 24</option>
+                                      <option value="25-29">25 - 29</option>
+                                      <option value="30-34">30 - 34</option>
+                                      <option value="35-39">35 - 39</option>
+                                      <option value="40-44">40 - 44</option>
+                                      <option value="45-49">45 - 49</option>
+                                      <option value="50-54">50 - 54</option>
+                                      <option value="55-59">55 - 59</option>
+                                      <option value="60-64">60 - 64</option>
+                                      <option value="65-69">65 - 69</option>
+                                      <option value="over 69">Over 69</option>
+                                      <option selected disabled="disabled"  hidden value=''>Age...</option>
+                                  </select>
+				                        </div>
 
-                <tr>
-                    <td>
-                        Gender:<span style="color: red;">*</span>
-                    </td> 
-                    <td>
-                      <select name = "sex" id = "sex">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                        <option value="nodisclose">Prefer not to disclose</option>
-                        <option selected disabled hidden value=''></option>
-                      </select>
-                    </td>
-                </tr>
+                                <div class="form-group">
+				                        	<label class="sr-only" for="form-occupation">Occupation</label>
+                                    <select name = "occupation" id = "occupation" placeholder="Occupation..." class="form-occupation form-control">
+                                        <option value="DataProf">Data Proffesional</option>
+                                        <option value="Archivist">Archivist</option>
+                                        <option value="Historian">Historian</option>
+                                        <option value="Student">Student</option>
+                                        <option value="Other">Other</option>
+                                        <option selected disabled="disabled" hidden value=''>Occupation...</option>
+                                    </select>
+				                        </div>
 
-              <tr>
-                <td>Age:<span style="color: red;">*</span></td> 
-                <td>
-                  <select name = "age" id = "age">
-                      <option value="under20">Under 20</option>
-                      <option value="20-24">20 - 24</option>
-                      <option value="25-29">25 - 29</option>
-                      <option value="30-34">30 - 34</option>
-                      <option value="35-39">35 - 39</option>
-                      <option value="40-44">40 - 44</option>
-                      <option value="45-49">45 - 49</option>
-                      <option value="50-54">50 - 54</option>
-                      <option value="55-59">55 - 59</option>
-                      <option value="60-64">60 - 64</option>
-                      <option value="65-69">65 - 69</option>
-                      <option value="over 69">Over 69</option>
-                      <option selected disabled="disabled" hidden value=''></option>
-                  </select>
-                </td>
-              </tr>
 
-              <tr>
-              <td>Occupation:<span style="color:red;">*</span></td> <td>
-              <select name = "occupation" id = "occupation">
-                  <option value="DataProf">Data Proffesional</option>
-                  <option value="Archivist">Archivist</option>
-                  <option value="Historian">Historian</option>
-                  <option value="Student">Student</option>
-                  <option value="Other">Other</option>
-                  <option selected disabled="disabled" hidden value=''></option>
-              </select>
-              </td>
-              </tr>
+                                <div class="form-group">
+				                        	<label class="sr-only" for="form-route">Route</label>
+                                  <select name = "route" id = "route" class="form-route form-control">
+                                      <option value="reddit">Reddit</option>
+                                      <option value="mailgroup">Museum Computer Group</option>
+                                      <option value="email">E-mail</option>
+                                      <option value="Narnia">Narnia</option>
+                                      <option value="other">Other</option>
+                                      <option selected disabled="disabled" hidden value=''>How did you come across this study?</option>
+                                  </select>
+				                        </div>
 
-              <tr>
-            
-              <td>How did you come across this study?:<span style="color:red;">*</span></td> <td>
-              <select name = "route" id = "route">
-                  <option value="reddit">Reddit</option>
-                  <option value="mailgroup">Museum Computer Group</option>
-                  <option value="email">E-mail</option>
-                  <option value="Narnia">Narnia</option>
+                                <div class="form-group">
+                                  <label class="sr-only" for="form-tna">Are you employed at The National Archives?</label>
+                                  Are you employed at The National Archives? &nbsp;
+                                      <input type="radio"  name="tna" value="y" id="yes">Yes &nbsp; 
+                                      <input type="radio"  name="tna" value="n" id="no" checked>No
 
-                  <option value="other">Other</option>
-                  <option selected disabled="disabled" hidden value=''></option>
-              </select>
-              </td>
-              </tr>
+				                        </div>
 
-              <tr>
-            <td>Are you employed at The National Archives?</td> <td>&nbsp;
-              <input type="radio" name="tna" value="y" id="yes">Yes &nbsp;
-              <input type="radio" name="tna" value="n" id="no" checked>No
-              </td>
-              </tr>
 
-              <tr id = "tnaDepts" style="visibility:hidden; opacity:0">
+				                        <div class="form-group" id = "tnaDepts" style="visibility:hidden; opacity:0">
+				                        	<label class="sr-only" for="form-tnaDept">Department</label>
+				                        	<textarea style="    height: 1px; padding: 0px 0px; border: 0px solid #ccc; border-radius: 0px;"></textarea>
 
-            <td>Which department are you in?<span style="color:red;">*</span></td> <td>
-              <select name = "tnaDept" id = "tnaDept">
-                <option value="Advice & Records Knowledge">Advice & Records Knowledge</option>
-                <option value="Archives Sector Development">Archives Sector Development</option>
-                <option value="Business Continuity Management">Business Continuity Management</option>
-                <option value="Business Coordination Unit">Business Coordination Unit</option>
-                <option value="Catalogue and Taxonomy">Catalogue and Taxonomy</option>
-                <option value="Chief Executive's Office">Chief Executive's Office</option>
-                <option value="Collection Care">Collection Care</option>
-                <option value="Corporate Planning">Corporate Planning</option>
-                <option value="Digital Preservation">Digital Preservation</option>
-                <option value="Document Services">Document Services</option>
-                <option value="Education & Outreach"> Education & Outreach</option>
-                <option value="Estates & Facilities">Estates & Facilities</option>
-                <option value="Finance">Finance</option>
-                <option value="Human Resources">Human Resources</option>
-                <option value="Information Assurance & Cyber Security">Information Assurance & Cyber Security</option>
-                <option value="Information Management">Information Management</option>
-                <option value="Information Policy">Information Policy</option>
-                <option value="IT Operations ">IT Operations </option>
-                <option value="KIM Team">KIM Team</option>
-                <option value="Learning and Development">Learning and Development</option>
-                <option value="Legislation Services">Legislation Services</option>
-                <option value="Licensing">Licensing</option>
-                <option value="Marketing & Communications">Marketing & Communications</option>
-                <option value="Procurement">Procurement</option>
-                <option value="Programmes and Strategy">Programmes and Strategy</option>
-                <option value="Quality and Excellence">Quality and Excellence</option>
-                <option value="Research Team">Research Team</option>
-                <option value="Security">Security</option>
-                <option value="Strategic Projects"> Strategic Projects</option>
-                <option value="Systems Development">Systems Development</option>
-                <option value="Transfer and Access">Transfer and Access</option>
-                <option value="Web Continuity">Web Continuity</option>
-                <option value="Web Team">Web Team</option>
-                <option value="Other">Other</option>
-                <option selected disabled="disabled" hidden value='N/A'></option>
-              </select>
-              </td>
-              </tr>
-            
-            </table>
-
-            <input  type="submit" class="btn btn-success btn-lg" value="Register">
-
-            <span class="btn btn-success btn-lg" id="start">Continue</span>
-
-            </form>
-
-               <br><br>
-
-               
-
-               <br><br> <span class="fake-link" onclick="restartmessage()">Cancel</span>
-
-              <button id="sub" class="btn btn-success btn-lg">Finish and submit</button>
-              
-              <span style = "font-size: 14px">
-              <br><br>
-              <span style="color: red;">*</span> mandatory field
-              <br>
-              Your name is not mandatory, it will not be used as part of the research (it is only used on the high scores list).
-              <br>
-               Please fill in your email address if you wish to be provided with a summary of the results at the conclusion of the investigation.
-             </span>
-          </div>
+                                    <select name = "tnaDept" id = "tnaDept" class="form-tnaDept form-control">
+                                        <option value="Advice & Records Knowledge">Advice & Records Knowledge</option>
+                                        <option value="Archives Sector Development">Archives Sector Development</option>
+                                        <option value="Business Continuity Management">Business Continuity Management</option>
+                                        <option value="Business Coordination Unit">Business Coordination Unit</option>
+                                        <option value="Catalogue and Taxonomy">Catalogue and Taxonomy</option>
+                                        <option value="Chief Executive's Office">Chief Executive's Office</option>
+                                        <option value="Collection Care">Collection Care</option>
+                                        <option value="Corporate Planning">Corporate Planning</option>
+                                        <option value="Digital Preservation">Digital Preservation</option>
+                                        <option value="Document Services">Document Services</option>
+                                        <option value="Education & Outreach"> Education & Outreach</option>
+                                        <option value="Estates & Facilities">Estates & Facilities</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Human Resources">Human Resources</option>
+                                        <option value="Information Assurance & Cyber Security">Information Assurance & Cyber Security</option>
+                                        <option value="Information Management">Information Management</option>
+                                        <option value="Information Policy">Information Policy</option>
+                                        <option value="IT Operations ">IT Operations </option>
+                                        <option value="KIM Team">KIM Team</option>
+                                        <option value="Learning and Development">Learning and Development</option>
+                                        <option value="Legislation Services">Legislation Services</option>
+                                        <option value="Licensing">Licensing</option>
+                                        <option value="Marketing & Communications">Marketing & Communications</option>
+                                        <option value="Procurement">Procurement</option>
+                                        <option value="Programmes and Strategy">Programmes and Strategy</option>
+                                        <option value="Quality and Excellence">Quality and Excellence</option>
+                                        <option value="Research Team">Research Team</option>
+                                        <option value="Security">Security</option>
+                                        <option value="Strategic Projects"> Strategic Projects</option>
+                                        <option value="Systems Development">Systems Development</option>
+                                        <option value="Transfer and Access">Transfer and Access</option>
+                                        <option value="Web Continuity">Web Continuity</option>
+                                        <option value="Web Team">Web Team</option>
+                                        <option value="Other">Other</option>
+                                        <option selected disabled="disabled" hidden value='N/A'>Department...</option>
+                                      </select>
+                                  </div>
+                                
+				                        <button type="submit" class="btn">Submit</button>
+				                    </form>
+			                    </div>
+                        	</div>
+                        	
+                        </div>
 
 
     </template>
 
 <template name="login">
-    <form>
 
-          <table align = "center" class = "signup"> 
 
-            <col class="labels" />
-            <col class="form" />
+        <div class="col-sm-5">
+          
+          <div class="form-box">
+            <div class="form-top">
+              <div class="form-top-left">
+                <h3>Login</h3>
+                  <p>Enter username and password:</p>
+              </div>
+              <div class="form-top-right">
+                <i class="fa fa-key"></i>
+              </div>
+              </div>
+              <div class="form-bottom">
+                  <form class="login-form">
+                    <div class="form-group">
+                      <label class="sr-only" for="form-username">Username</label>
+                        <input type="username" name="loginUsername" id="userName" placeholder="Username..." class="form-username form-control" />
+                      </div>
+                      <div class="form-group">
+                        <label class="sr-only" for="form-password">Password</label>
+                        <input type="password" name="loginPassword" id="password" placeholder="Password..." class="form-password form-control" />
+                      </div>
+                      <input type="submit" class="btn" value="Login">
+                  </form>
+                </div>
+              </div>
+            </div>
 
-                <tr>
-                    <td>Username:<span style="color: red;">*</span></td>
-                    <td><input type="username" name="loginUsername" id="userName" placeholder="" /></td>
-                </tr>
 
-                <tr>
-                    <td>Password:<span style="color: red;">*</span></td> 
-                    <td><input type="password" name="loginPassword" id="password" placeholder="" /></td>
-                </tr>
-
-          </table>
-        <input type="submit" value="Login">
-    </form>
 </template>
 
 
@@ -235,12 +270,4 @@
 <template name="dashboard">
     <p>You're logged in.</p>
     <p><a href="#" class="logout">Logout</a></p>
-</template>
-
-<template name="splashscreen">
-
-    <p><a href="#" id="loadlogin" class="Login btn btn-success btn-lg">Login</a></p>
-    <p><a href="#" id="loadregister" class="Register btn btn-success btn-lg">Register</a></p>
-    <p><a href="#" id="loadhighscore" class="Highscores btn btn-success btn-lg">Highscores</a></p>
-
 </template>

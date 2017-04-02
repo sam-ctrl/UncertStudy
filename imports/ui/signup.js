@@ -72,26 +72,5 @@ if (Meteor.isClient) {
         }
     });
 
-    
-    Template.splashscreen.helpers({
-        loadlogin : function () {
-            Return loadlogin2.get();
-        }
-    }); 
-
-
-        Template.splashscreen.events({
-        "click #loadlogin": function (event, template) {
-                event.preventDefault(); 
-                    
-                loadlogin2.set( true );
-
-                console.log(loadlogin2)
-
-        }
-
-
-
-    });
 
 }
