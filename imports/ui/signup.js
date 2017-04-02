@@ -10,6 +10,9 @@ Template.signup.onRendered(function () {
 
 });
 
+loadlogin2 = new ReactiveVar( false );
+console.log(loadlogin2);
+
 if (Meteor.isClient) {
 
 
@@ -37,10 +40,9 @@ if (Meteor.isClient) {
             var routeVar = event.target.route.value;
             var tnaVar = event.target.tna.value;
             var tnaDeptVar = event.target.tnaDept.value;
+            
 
-            Accounts.createUser({
-                username: usernameVar,
-                password: passwordVar,
+            var userDetails = {
                 name: nameVar,
                 email: emailVar,
                 gender: genderVar,
@@ -49,12 +51,16 @@ if (Meteor.isClient) {
                 route: routeVar,
                 tna: tnaVar,
                 tnaDept: tnaDeptVar 
+            };
+
+            Accounts.createUser({
+                username: usernameVar,
+                password: passwordVar,
+                profile: userDetails
 
             });
         }
     });
-
-
 
 
     Template.dashboard.events({
@@ -66,5 +72,26 @@ if (Meteor.isClient) {
         }
     });
 
-}
+    
+    Template.splashscreen.helpers({
+        loadlogin : function () {
+            Return loadlogin2.get();
+        }
+    }); 
 
+
+        Template.splashscreen.events({
+        "click #loadlogin": function (event, template) {
+                event.preventDefault(); 
+                    
+                loadlogin2.set( true );
+
+                console.log(loadlogin2)
+
+        }
+
+
+
+    });
+
+}

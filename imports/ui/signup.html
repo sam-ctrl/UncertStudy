@@ -4,11 +4,23 @@
           <div class="inner">
           {{#if currentUser}}
 
+              {{> loginButtons}}
               {{> dashboard}}
           
           {{else}}
-              {{> signup}}
-              {{> login}}
+
+              {{> splashscreen}}
+
+                {{#if loadlogin}}
+                  {{> login}}
+                {{else}}
+                {{/if}}
+
+                <!--{{#if loadsignup}}
+                  {{> signup}}
+                {{else}}
+                {{/if}}-->
+              
           {{/if}}
 
         </div>
@@ -170,13 +182,15 @@
 
             <input  type="submit" class="btn btn-success btn-lg" value="Register">
 
+            <span class="btn btn-success btn-lg" id="start">Continue</span>
+
             </form>
 
                <br><br>
 
                
 
-               <span class="btn btn-success btn-lg" id="start">Continue</span> <br><br> <span class="fake-link" onclick="restartmessage()">Cancel</span>
+               <br><br> <span class="fake-link" onclick="restartmessage()">Cancel</span>
 
               <button id="sub" class="btn btn-success btn-lg">Finish and submit</button>
               
@@ -221,4 +235,12 @@
 <template name="dashboard">
     <p>You're logged in.</p>
     <p><a href="#" class="logout">Logout</a></p>
+</template>
+
+<template name="splashscreen">
+
+    <p><a href="#" id="loadlogin" class="Login btn btn-success btn-lg">Login</a></p>
+    <p><a href="#" id="loadregister" class="Register btn btn-success btn-lg">Register</a></p>
+    <p><a href="#" id="loadhighscore" class="Highscores btn btn-success btn-lg">Highscores</a></p>
+
 </template>
