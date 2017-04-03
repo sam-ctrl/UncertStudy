@@ -181,6 +181,7 @@
         var clickeddate
         var submitted = 0
         var clicks = 0
+        var clicks2 = 0
         var dateupdates = 0
 
         var randdate = new Date(+mindate + Math.random() * (maxdate - mindate)); //A random date
@@ -405,7 +406,21 @@
 
     function brushstart() {
 
-        clicks++
+        if (submitted == 0) {
+
+            clicks++
+
+        }else{ 
+            
+            if (submitted == 1) {
+
+                clicks2++
+
+            }else{}
+        
+        };
+        
+
 
         if (brushed == 0) {
             var point = d3.mouse(this)[0]
@@ -522,7 +537,7 @@
             probMinVal = d3.min(extent)
             probMaxVal = d3.max(extent)
 
-            if (dateFrom.value && dateTo.value) {
+            if (clicks > 0) {
 
                 submitted = 1;
 
@@ -584,7 +599,7 @@
                         posMinVal = d3.min(extent)
                         posMaxVal = d3.max(extent)
 
-                    if (dateFrom.value && dateTo.value) {
+                    if (clicks2 > 0) {
 
                         submitted = 2;
 
@@ -660,7 +675,8 @@
                                 posMin: posMinVal,
                                 lastSnap: userSelectedResolution,
                                 confidence: diff,
-                                clicks: clicks,
+                                probclicks: clicks,
+                                posclicks: clicks2,
                                 dateupdates: dateupdates,
                                 WindowHeight: $(window).height(),
                                 DocumentHeight: $(document).height(),
