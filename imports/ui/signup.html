@@ -1,9 +1,11 @@
   <body>
 
           {{#if currentUser}}
-
+              <div class="loginbutton">
               {{> loginButtons}}
-              {{> dashboard}}
+              </div>
+              <!--{{> dashboard}}-->
+              {{> study}}
           
           {{else}}
 
@@ -40,11 +42,7 @@
                             <h1>A Study into The Perception of Common Uncertainty Terms Used With Dates</h1>
                             <div class="description">
                             	<p>
-	                            	Since different uncertainty terms associated with dates convey varying amounts of certainty, to fully transfer textual
-                                date information into a visual medium the nature of the terms used must be understood. Uncertainty terms are by
-                                their nature and intent ambiguous. They are also subject to the interpretation of the parties involved (both audience
-                                and the author). This study aims to comprehend what is most commonly intended when these terms are used, in a
-                                manner that can then be transferred to a visual medium.
+	                            	Since different uncertainty terms associated with dates convey varying amounts of certainty, to fully transfer textual date information into a visual medium the nature of the terms used must be understood. Uncertainty terms are by their nature and intent ambiguous. They are also subject to the interpretation of the parties involved (both audience and the author). This study aims to comprehend what is most commonly intended when these terms are used, in a manner that can then be transferred to a visual medium.
                             	</p>
                             </div>
                         </div>
@@ -223,7 +221,7 @@
 
                                   </div>
                                 
-				                        <button type="submit" class="btn">Submit</button>
+				                        <input type="submit" class="btn" value="Register">
 				                    </form>
 			                    </div>
                         	</div>
@@ -272,4 +270,72 @@
 <template name="dashboard">
     <p>You're logged in.</p>
     <p><a href="#" class="logout">Logout</a></p>
+</template>
+
+
+    <template name="study">
+
+      <div class="outer">
+        <div class="middle">
+          <div class="inner">
+            <div class="section">
+                Using the date inputs or clicking and dragging on the timelines
+                <br>
+                <h1>Input the <u><span id = "prob">probable</span></u> range for <br><b> "<span id = 'randomterm'></span> <span id = 'randompickdate'></span>"</b></h1>
+                <br>
+                from 
+                <input type="date" id="datefrom" class="dateselect" />
+                to
+                <input type="date" id="dateto" class="dateselect" /> &nbsp;  &nbsp;
+                <br> 
+
+                <div id='chart'></div>
+
+                Snap to nearest:
+                    <input type="radio" class="snap" name="snap" value="day" id="day">Day &nbsp;
+                    <input type="radio" class="snap" name="snap" value="month" id="month">Month &nbsp;
+                    <input type="radio" class="snap" name="snap" value="year" id="year">Year &nbsp;
+                    <input type="radio" class="snap" name="snap" value="no" id="no" checked>No Snap 
+
+                <br>
+
+                <!--Zoom: <button id=zoomOut>+</button><button id=zoomIn>-</button>-->
+                <!--<button id="resetzoom" onclick="resetZoom()">Reset Zoom</button>-->
+                <br /><br />
+                <input type="hidden" name="startTime1" id='startTime1' />
+                <input type="hidden" name="target1" id='target1' />
+                <input type="hidden" name="resolution" id='resolution' />
+                <input type="hidden" name="probMin" id='probMin' />
+                <input type="hidden" name="probMax" id='probMax' />
+                <input type="hidden" name="posMin" id='posMin' />
+                <input type="hidden" name="posMax" id='posMax' />
+                <input type="hidden" name="clicknumber1" id="clicknumber1" />
+
+
+
+
+                <input type="hidden" name="distance1" id='distance1' /><br>
+                Please rate your confidence with this assessment:<br>
+                <input type="hidden" name="difficulty1" id="difficulty1" value="Unchanged/Neutral"><br>
+                <div class="slider" id="difficultySlider1"></div>
+                <br><br><br>
+
+                <a class="btn btn-success btn-lg" id="Continue">Next</a> <a href="http://samctrl.com/portfolio" class="btn btn-danger btn-lg">Cancel</a>
+
+        
+                <input type="hidden" name="pageloadDate" id='pageloadDate' /> <!-- start time -->
+                <input type="hidden" name="endTime" id='endTime' />
+                <input type="hidden" name="totaldistance" id='totaldistance' />
+                <input type="hidden" name="quizendWindowHeight" id='quizendWindowHeight'/>
+                <input type="hidden" name="quizendDocumentHeight" id='quizendDocumentHeight'/>
+                <input type="hidden" name="quizendWindowWidth" id='quizendWindowWidth'/>
+                <input type="hidden" name="quizendDocumentWidth" id='quizendDocumentWidth'/>
+                <input type='hidden' name="quizendScreenHeight" id='quizendScreenHeight'/>
+                <input type='hidden' name="quizendScreenWidth" id='quizendScreenWidth'/>
+
+            </div>
+        </div>
+      </div>
+    </div>
+
 </template>

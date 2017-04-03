@@ -21,7 +21,7 @@
     }
 
 body {
-    font-family: 'Nunito' !important;
+    /* font-family: 'Nunito' !important; */
     background-color: #F4F4F4;
 }
 
@@ -47,6 +47,19 @@ div.placeholder p {
         margin-right: -50%;
         transform: translate(-50%, -50%);
 } 
+
+div.loginbutton{
+	text-align: left;
+	padding-left: 10px;
+    padding-top: 10px;
+   /* position: absolute;
+	z-index: -1; */
+
+}
+
+div.login-buttons-dropdown-align-{
+	z-index: 1;
+}
 
 .tickcross {
     font-weight: bold;

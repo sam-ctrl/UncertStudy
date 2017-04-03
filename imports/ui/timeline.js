@@ -1,4 +1,5 @@
 
+
 //-------------------------------------- LEFT TO DO ----------------------------
 
 // lines before submission
@@ -10,7 +11,19 @@
 
             //Configure the difficulty sliders
             var difficulty = ["Very Uncertain", "Uncertain", "Fairly Uncertain", "Neutral", "Fairly Certain", "Certain", "Very Certain"];
+            
 
+            //get the users IP
+
+            var UserIP
+
+            Meteor.call('getIP', function (err, res) {
+
+                UserIP = res
+
+                console.log(UserIP)
+                
+            });
 
             $(".slider")
                                 
@@ -444,6 +457,8 @@
 
         };
 
+    var userSelectedResolution = "no"
+
     function roundBrush() {
 
             userSelectedResolution = d3.select('input[name="snap"]:checked').node().value
@@ -493,7 +508,7 @@
         posMinVal,
         posMaxVal;
     
-    d3.select('#next')
+    d3.select('#Continue')
     .on('click' , function() {
 
     //Read input date values
@@ -612,7 +627,7 @@
 
                             //change button text from continue to submit
 
-                            d3.select('#next')
+                            d3.select('#Continue')
                                 .text ("Submit")
                                 .attr ("class", "btn btn-success btn-lg");
 
@@ -631,16 +646,19 @@
 
                         //What to do if both probable and possible have been entered i.e. submit the data to mongo and load a new one
 
+
+
                             console.log("submitting")
 
                             var compiledData = ({
                                 givenDate: roundranddate, 
-                                givenResolution: roundranddate,
+                                givenResolution: randomResolution,
                                 givenTerm: randomterm,
                                 probMax: probMaxVal,
                                 probMin: probMinVal,
                                 posMax: posMaxVal,
                                 posMin: posMinVal,
+                                lastSnap: userSelectedResolution,
                                 confidence: diff,
                                 clicks: clicks,
                                 dateupdates: dateupdates,
@@ -649,7 +667,10 @@
                                 WindowWidth: $(window).width(),
                                 DocumentWidth: $(document).width(),
                                 ScreenHeight: screen.height,
-                                ScreenWidth: screen.width,
+                                ScreenWidth: screen.width,                                
+                                user: Meteor.user().username,
+                                userID: Meteor.userId(),
+                                IP: UserIP,
                                 Phase: "testing"
                                  });
 
@@ -657,7 +678,7 @@
 
                             studyEntry.insert(compiledData);
 
-                            //loadNext()
+                            loadNext()
 
                 }
 
