@@ -101,7 +101,7 @@
 
 
         //pick a random term
-        var terms = ["about", "approximatley", "circa", "c.", "around", "perhaps", "probably", "possibly", "late", "early"]
+        var terms = ["about", "approximately", "circa", "c.", "around", "perhaps", "probably", "possibly", "late", "early"]
         var randomterm = terms[Math.floor(Math.random()*terms.length)];
 
         //pick a random resolution ROUND
@@ -183,6 +183,7 @@
         var clicks = 0
         var clicks2 = 0
         var dateupdates = 0
+	var dateEntered = 0
 
         var randdate = new Date(+mindate + Math.random() * (maxdate - mindate)); //A random date
         var roundranddate = getRound(randomResolution, randdate) ;//The random date rounded to the selected resolution (replaces roundrandbetween)
@@ -410,11 +411,15 @@
 
             clicks++
 
+	    dateEntered = 1
+
         }else{ 
             
             if (submitted == 1) {
 
                 clicks2++
+
+		dateEntered = 1
 
             }else{}
         
@@ -464,6 +469,9 @@
     d3.selectAll(".dateselect")
         .on("change", function() { 
             updatebrush()
+		
+		dateEntered = 1
+
         });
 
     function snapTo(){
@@ -537,9 +545,10 @@
             probMinVal = d3.min(extent)
             probMaxVal = d3.max(extent)
 
-            if (clicks > 0) {
+            if (dateEntered == 1) {
 
                 submitted = 1;
+		dateEntered = 0;
 
                 //Write values to the hidden fields (should probably do it to ISO standard - Ask Jarv about date standards in mongo)
                 d3.select('#probMin').property("value", probMinVal);
@@ -577,7 +586,8 @@
                 //Change the heading to possible
 
                 d3.select("#prob")
-                    .text("possible");
+                    .text("Maximum Possible")
+		            .style("color", "#9E88A9");
                         
                 //Clear brush
                 d3.selectAll(".brush").call(brush.clear());
@@ -599,7 +609,7 @@
                         posMinVal = d3.min(extent)
                         posMaxVal = d3.max(extent)
 
-                    if (clicks2 > 0) {
+                    if (dateEntered == 1) {
 
                         submitted = 2;
 
