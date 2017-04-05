@@ -4,31 +4,30 @@ import { ReactiveDict } from 'meteor/reactive-dict';
  
 import './signup.html';
 
-var UserIP
 
-Meteor.startup(function() {
-  Meteor.call('getIP', function (err, res) {
+// Template.study.onRendered(function () {
 
-    UserIP = res
-    
-  });
-});
+//      import './timeline.js';
 
-Template.study.onRendered(function () {
-
-     import './timeline.js';
-
-});
+// });
 
 
 Template.signup.onRendered(function () {
 
-     import './signuplogic';
+     import './signuplogic.js';
 
 });
 
 
-
+Template.study.onRendered(function () {
+    this.autorun(() => {
+        if (this.subscriptionsReady()) {
+            Tracker.afterFlush(() => {
+                import './timeline.js';
+            })
+        }
+    });
+});
 
 if (Meteor.isClient) {
 
@@ -68,7 +67,6 @@ if (Meteor.isClient) {
             var routeVar = event.target.route.value;
             var tnaVar = event.target.tna.value;
             var tnaDeptVar = event.target.tnaDept.value;
-            var IPvar = UserIP;
 
             if (usernameVar && passwordVar && genderVar && ageVar && occupationVar) { 
 
@@ -82,7 +80,6 @@ if (Meteor.isClient) {
                         route: routeVar,
                         tna: tnaVar,
                         tnaDept: tnaDeptVar,
-                        IP: IPvar
                     };
 
                     Accounts.createUser({
