@@ -15,15 +15,15 @@
 
             //get the users IP
 
-            var UserIP
+            // var UserIP
 
-            Meteor.call('getIP', function (err, res) {
+            // Meteor.call('getIP', function (err, res) {
 
-                UserIP = res
+            //     UserIP = res
 
-                console.log(UserIP)
+            //     console.log(UserIP)
                 
-            });
+            // });
 
             $(".slider")
                                 
@@ -694,15 +694,20 @@
                                 DocumentWidth: $(document).width(),
                                 ScreenHeight: screen.height,
                                 ScreenWidth: screen.width,                                
-                                user: Meteor.user().username,
-                                userID: Meteor.userId(),
-                                IP: UserIP,
+                                // user: Meteor.user().username,
+                                // userID: Meteor.userId(),
+                                // IP: UserIP,
                                 Phase: "testing"
                                  });
 
                             console.log(compiledData)
 
-                            studyEntry.insert(compiledData);
+                            // studyEntry.insert(compiledData);
+
+                            Meteor.call('insertData', compiledData, function(err) {
+                                if(err) return console.log('Error', err);
+                                return console.log('Done');
+                            });
 
                             loadNext()
 
