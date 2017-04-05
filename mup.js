@@ -2,10 +2,10 @@ module.exports = {
   servers: {
     one: {
       // TODO: set host address, username, and authentication method
-      host: '138.68.148.212',
+      host: '138.68.135.196',
       username: 'root',
       pem: '~/.ssh/id_rsa'
-      // password: 'acornsucksDO1'
+      // password: 'server-password'
       // or neither for authenticate from ssh-agent
     }
   },
@@ -13,7 +13,7 @@ module.exports = {
   meteor: {
     // TODO: change app name and path
     name: 'UncertStudy',
-    path: '.',
+    path: '../app',
 
     servers: {
       one: {},
@@ -26,7 +26,7 @@ module.exports = {
     env: {
       // TODO: Change to your app's url
       // If you are using ssl, it needs to start with https://
-      ROOT_URL: 'http://138.68.148.212',
+      ROOT_URL: 'http://138.68.135.196',
       //MONGO_URL: 'mongodb://localhost/meteor',
     },
 
